@@ -5,6 +5,16 @@ public class ApplicationContext {
     public static final String STORE_PARAMETER = "store";
     public static final String PROMO_PARAMETER = "promo";
     public static final String MODE_PARAMETER = "mode";
+    public static final String PORT_PARAMETER = "port";
+    private static final int DEFAULT_PORT = 7222;
+
+    public int getPort() {
+        String port = System.getProperty(PORT_PARAMETER);
+        if (port == null){
+            return DEFAULT_PORT;
+        }
+        return Integer.parseInt(port);
+    }
 
     public void apply() {
         if (hasParameterValue(STORE_PARAMETER, "xml")) {
